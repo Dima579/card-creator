@@ -39,7 +39,11 @@ session_start();
 
             <div class="inner-pad-button-group">
                 <a class="anchor-button" href="form.php">Create new card</a>
-                <label for="uploader" class="button-style">Upload save file</label>
+                <form action="upload.php" method="POST" enctype="multipart/form-data" class="upload-form">
+                    <label for="uploader" class="button-style">Upload save file</label>
+                    <input type="file" id="uploader" name="uploader" accept=".json">
+                    <input type="submit" name="submit-file">
+                </form>
             </div>
         </div>
     </section>

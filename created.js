@@ -65,12 +65,9 @@ const loadEnd = () =>
 
 document.addEventListener("DOMContentLoaded", async () => 
     {
-    const playerInfo = await retrieveCardData();
-    if (playerInfo) 
-        {
-            mapCardData(playerInfo);
-        }
-});
+        playerInfo = await retrieveCardData();
+        if (playerInfo) {mapCardData(playerInfo);}
+    });
 
 document.addEventListener("animationend", loadEnd);
 
@@ -86,3 +83,18 @@ const saveCard = (createdCard) =>
         link.click();
   });
 };
+
+
+const exportSave = (playerInfo) => 
+{
+    const jsonStr = JSON.stringify(window.playerInfo, null, 2);
+    const blob = new Blob([jsonStr], { type: "application/json"});
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "player-card-save.json";
+    link.click();
+
+  URL.revokeObjectURL(url);
+}

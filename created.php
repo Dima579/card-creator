@@ -43,9 +43,10 @@ session_start();
             </div>
 
             <div class="inner-pad-button-group">
-                <button id="downloadBtn" onclick="saveCard(createdCard)">Export as image</button>
-                <button id="exportBtn" onclick="exportSave(playerInfo)">Export as save file</button>
-                <a class="anchor-button" href="index.php">Return to Main Page</a>
+                    <button type="button" id="downloadBtn" onclick="saveCard(createdCard)">Export as image</button>
+                    <button type="button" id="exportBtn" onclick="exportSave()">Export as save file</button>
+                    <a class="anchor-button" href="index.php">Return to Main Page</a>
+                    <a class="anchor-button" href="form.php">Create new card</a>
             </div>
         </div>
     </section>

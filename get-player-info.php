@@ -10,4 +10,3 @@ if (!isset($_SESSION['player-info'])) {
 }
 
 echo json_encode($_SESSION['player-info']);
-?>
