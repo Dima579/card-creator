@@ -1,7 +1,8 @@
 <?php
 session_start();
 
-$playerInfo = [
+$playerInfo = 
+[
     "profImage" => $_POST["profile-image-option"],
     "imageShape" => $_POST["shape-selector-option"],
     "playerName" => $_POST["player-name"],
@@ -18,19 +19,20 @@ foreach ($playerInfo as $key => $value)
 {
    if (empty($value))
    {
-        header("location: index.php");
-        echo "Error: entries are missing required information";
-   }
-   elseif (strlen($playerInfo["playerName"]) > 30 || strlen($playerInfo["playerTitle"]) > 50 || strlen($playerInfo["favGame"]) > 30 || strlen($playerInfo["specialAbility"]) > 30)
-   {
-        header("location: index.php");
-        echo "Error: entries are missing required information";
-   }
-   else
-   {
-        $_SESSION['player-info'] = $playerInfo;
-        header("Location: created.php");
+        $_SESSION["errorCode"] = 2;
+        header("location: form.php");
         exit();
    }
 }
+
+if (strlen($playerInfo["playerName"]) > 30 || strlen($playerInfo["playerTitle"]) > 50 || strlen($playerInfo["favGame"]) > 30 || strlen($playerInfo["specialAbility"]) > 30)
+{
+     $_SESSION["errorCode"] = 2;
+     header("location: form.php");
+     exit();
+}
+
+$_SESSION['player-info'] = $playerInfo;
+header("Location: created.php");
+exit();
 ?>

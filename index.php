@@ -7,7 +7,7 @@ $_SESSION["errorCode"] = $_SESSION["errorCode"] ?? null;
 [
     "uploadFailed" => "ERROR CODE 400: No player data found or upload error",
     "invalidFile" => "ERROR CODE 415: Uploaded file was invalid",
-    "invalidEntries" => "ERROR CODE 422: One or more player data input exceeded max character length"
+    "invalidEntries" => "ERROR CODE 422: One or more player data input exceeded max character length or was missing information"
 ];
 ?>
 

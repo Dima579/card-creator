@@ -25,8 +25,6 @@ const retrieveCardData = async () =>
             const response = await fetch('get-player-info.php')
             if (!response.ok)
                 {
-                    //console.log("error");
-                    
                     errorEnd();
                     return null;
                 }
@@ -36,7 +34,11 @@ const retrieveCardData = async () =>
                     return playerInfo;
                 }
         }
-        catch(error){console.log("error:", error);}
+        catch(error)
+        {
+            console.log("error:", error);
+            errorEnd();
+        }
     }
 
 const mapCardData = (playerInfo) => 
@@ -75,7 +77,6 @@ const errorEnd = () =>
 
 document.addEventListener("DOMContentLoaded", async () => 
     {
-        //errorEnd();
         playerInfo = await retrieveCardData();
         if (playerInfo) {mapCardData(playerInfo);}
     });

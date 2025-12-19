@@ -169,8 +169,16 @@ session_start();
             <input type="reset" name="reset">
             <a class="anchor-button" href="index.php">Return to Main Page</a>
         </div>
-
     </form>
+    <span id="errorHandler">
+        <?php 
+            if (isset($_SESSION["errorCode"])) 
+            {
+                if ($_SESSION["errorCode"] == 2) {echo '<p class="error-message-container">' . $_SESSION["errorMessages"]["invalidEntries"] . '</p>';}
+                else {unset($_SESSION["errorCode"]);}
+            }
+        ?>
+    </span>
 </section>
 
     <footer><p class="text-italic">Web application created by Alex Dimakopoulos 2025</p></footer>
