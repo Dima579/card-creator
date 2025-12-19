@@ -105,12 +105,12 @@ session_start();
 
         <div class="input-group">
             <label for="player-name" class="text-bold">Player Name:</label>
-            <input type="text" id="player-name" name="player-name" required>
+            <input type="text" id="player-name" name="player-name" required maxlength="30">
         </div>
 
         <div class="input-group">
             <label for="player-title" class="text-bold">Player Title:</label>
-            <input type="text" id="player-title" name="player-title" required maxlength="30">
+            <input type="text" id="player-title" name="player-title" required maxlength="50">
         </div>
 
         <div class="radio-section">
@@ -145,7 +145,7 @@ session_start();
 
         <div class="input-group">
             <label for="favourite-game" class="text-bold">Favourite game:</label>
-            <input type="text" id="favourite-game" name="favourite-game" required>
+            <input type="text" id="favourite-game" name="favourite-game" required maxlength="30">
         </div>
 
         <div class="input-group">

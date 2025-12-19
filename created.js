@@ -4,6 +4,8 @@ const createdCard = document.querySelector(".card");
 const loadingPage = document.querySelector(".loading-page");
 const loadingStatus = document.getElementById("loading-Status");
 
+const loadingIcon = document.getElementById("loading-icon");
+
 const resPlayerName = document.getElementById("playerName");
 const resPlayerTitle = document.getElementById("playerTitle");
 
@@ -23,8 +25,10 @@ const retrieveCardData = async () =>
             const response = await fetch('get-player-info.php')
             if (!response.ok)
                 {
-                    console.log("error");
-                    return;
+                    //console.log("error");
+                    
+                    errorEnd();
+                    return null;
                 }
             else
                 {
@@ -62,12 +66,20 @@ const loadEnd = () =>
         loadingPage.style.display = "none";
     }
 
+const errorEnd = () =>
+{
+    loadingIcon.src = "./images/cross-icon.png";
+    loadingStatus.textContent = "Error occurred whilst generating card. Redirecting...";
+    setTimeout(() => {window.location.replace("index.php");}, 7000);
+};
 
 document.addEventListener("DOMContentLoaded", async () => 
     {
+        //errorEnd();
         playerInfo = await retrieveCardData();
         if (playerInfo) {mapCardData(playerInfo);}
     });
+
 
 document.addEventListener("animationend", loadEnd);
 

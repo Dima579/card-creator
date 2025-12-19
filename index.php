@@ -1,5 +1,14 @@
 <?php
 session_start();
+
+$_SESSION["errorCode"] = $_SESSION["errorCode"] ?? null;
+
+ $_SESSION["errorMessages"] = 
+[
+    "uploadFailed" => "ERROR CODE 400: No player data found or upload error",
+    "invalidFile" => "ERROR CODE 415: Uploaded file was invalid",
+    "invalidEntries" => "ERROR CODE 422: One or more player data input exceeded max character length"
+];
 ?>
 
 <!DOCTYPE html>
@@ -15,9 +24,9 @@ session_start();
         <div class="inner-pad">
             <div class="text-group">
                 <h1>Player Card Creator</h1>
-                <p>Hi Welcome to Player Card Creator project! This project was created to show fundamental PHP knowledge, 
-                    you can either create a new player card which can be downloaded or you can upload a save file to bring a previous card back. 
-                    Thank you for viewing my project!</p>
+                <p>Hi Welcome to my Player Card Creator project! This project was created to show fundamental PHP knowledge, 
+                   you can either create a new player card which can be downloaded or you can upload a save file to bring a previous card back. 
+                   Thank you for viewing my project!</p>
             </div>
 
             <div class="card">
@@ -40,13 +49,39 @@ session_start();
             <div class="inner-pad-button-group">
                 <a class="anchor-button" href="form.php">Create new card</a>
                 <form action="upload.php" method="POST" enctype="multipart/form-data" class="upload-form">
+                <span class="button-group">
                     <label for="uploader" class="button-style">Upload save file</label>
-                    <input type="file" id="uploader" name="uploader" accept=".json">
-                    <input type="submit" name="submit-file">
+                    <input type="file" id="uploader" name="uploader" accept=".json" required>
+                    <input type="text" id="upload-name" value="choose file" disabled>
+                </span>
+                    <input type="submit" name="submit-file" id="submit-file-button">
                 </form>
+                <span id="errorHandler">
+                    <?php 
+                        if (isset($_SESSION["errorCode"])) 
+                            {
+                                switch ($_SESSION["errorCode"])
+                                {
+                                    case 0:
+                                        echo '<p class="error-message-container">' . $_SESSION["errorMessages"]["uploadFailed"] . '</p>';
+                                        break;
+
+                                    case 1:
+                                        echo '<p class="error-message-container">' . $_SESSION["errorMessages"]["invalidFile"] . '</p>';
+                                        break;
+
+                                    case 2:
+                                        echo '<p class="error-message-container">' . $_SESSION["errorMessages"]["invalidEntries"] . '</p>';
+                                        break;
+                                }
+                                unset($_SESSION["errorCode"]);
+                            }
+                    ?>
+                </span>
             </div>
         </div>
     </section>
     <footer><p class="text-italic">Web application created by Alex Dimakopoulos 2025</p></footer>
+    <script src="index.js"></script>
 </body>
 </html>

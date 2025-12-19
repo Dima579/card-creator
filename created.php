@@ -15,7 +15,7 @@ session_start();
     <section class="page-container">
         <div class="loading-page">
             <h1 id="loading-Status">GENERATING PLAYER CARD...</h1>
-            <img class="loading-icon" src="./images/loading-icon.gif" alt="Loading animation">
+            <img id="loading-icon" class="loading-icon" src="./images/loading-icon.gif" alt="Loading animation">
         </div>
 
         <div class="inner-pad">

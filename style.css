@@ -28,7 +28,8 @@
 
 input[type="file"] {display: none;}
 
-.button-style {
+.button-style
+{
     transition: background-color 0.25s ease-in;
     background-color: #2f4768;
     color: white;
@@ -187,6 +188,7 @@ a{text-decoration: none;}
     {
     border-radius: 50%;
     transition: box-shadow 0.25s ease-in;
+    border: 1px solid black;
     }
 
     .ssc__image
@@ -195,7 +197,7 @@ a{text-decoration: none;}
     height: 100%;
     transition: box-shadow 0.25s ease-in;
     border-radius: 0.5rem;
-    border: 1px solid black;
+    
     }
         
     .ssc__item input[type="radio"]:checked + label .ssc__image, .ssc__image:hover
@@ -219,6 +221,16 @@ input, select, option
     padding: 0.25rem;
     border-radius: 0.5rem;
     border: 1px solid black;
+}
+
+.upload-form
+{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+
+    justify-content: center;
+    align-items: center;
 }
 /*FORM*/
 
@@ -249,6 +261,7 @@ input, select, option
 {
     max-width: 5rem;
     max-height: auto;
+    border: 1px solid black;
 }
 
 .card__image--circular
@@ -304,6 +317,24 @@ input, select, option
     display: flex;
     flex-direction: column;
     gap: 0.315rem;
+}
+
+.error-message-container
+{
+    padding: 0.25rem;
+    border: 0.063rem solid black;
+    border-radius: 0.5rem;
+    background-color:orangered;
+    color: white;
+}
+
+.button-group
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.25rem;
 }
 
 .fade-out 
