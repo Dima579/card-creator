@@ -1,0 +1,6 @@
+Options -Indexes
+
+<FilesMatch "^\.|\.(ini|log|json)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
